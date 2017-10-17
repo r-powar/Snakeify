@@ -1,22 +1,25 @@
-document.addEventListener("DOMContentLoaded", function(){
-    var canvasElement = document.getElementById('snakeCanvas');
-    var ctx = canvasElement.getContext('2d');
-    var boardWidth = canvasElement.width;
-    var boardHeight = canvasElement.height;
+
+(function () {
+    document.addEventListener("DOMContentLoaded", function () {
+        game.init();
+    });
+
+    document.addEventListener("keydown", function (evnt) {
+        var keyDirection = evnt.keyCode;
+        console.log("Direction:", direction);
+        if (keyDirection === 37 && direction !== 'right') {
+            direction = 'left';
+        } else if (keyDirection === 38 && direction !== 'down') {
+            direction = 'up';
+        } else if (keyDirection === 39 && direction !== 'left') {
+            direction = 'right';
+        } else if (keyDirection === 40 && direction !== 'up') {
+            direction = 'down';
+        }
+    });
+
+})();
 
 
 
-    ctx.fillStyle = 'green';
-    ctx.fillRect(5, 5, 10, 10);
 
-    snakeFood(boardWidth, boardHeight, ctx);
-
-});
-
-
-function snakeFood(width, height, canvasElement){
-    var randomX = Math.round(Math.random()*(width - 10)/10);
-    var randomY = Math.round(Math.random()*(height - 10)/10);
-    canvasElement.fillStyle = 'red';
-    canvasElement.fillRect(randomX, randomY, 10, 10);
-}
