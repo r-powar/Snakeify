@@ -1,12 +1,13 @@
 
 (function () {
+    //start the game on browser load
     document.addEventListener("DOMContentLoaded", function () {
-        game.init();
+        game.start();
     });
 
+    //event listener for arrow keys interaction
     document.addEventListener("keydown", function (evnt) {
         var keyDirection = evnt.keyCode;
-        console.log("Direction:", direction);
         if (keyDirection === 37 && direction !== 'right') {
             direction = 'left';
         } else if (keyDirection === 38 && direction !== 'down') {
@@ -19,7 +20,6 @@
     });
 
 })();
-
 
 
 
